@@ -1,0 +1,25 @@
+.each-friend {
+  height: 3rem;
+  background: plum;
+  border: 1px solid;
+  display: flex;
+}
+
+.firsthalf {
+  width: 70%;
+  display: flex;
+  justify-content: start;
+}
+
+.secondHalf {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  height: 2.2rem;
+  width: 3rem;
+  margin: auto;
+  /* background-image: url("./dustbin.png"); */
+}
