@@ -1,33 +1,13 @@
 import React, { useState } from "react";
 import "./Home.css";
 import Friend from "./Friend";
-let searchResult = [];
-
-const findRelated = (letter, arr) => {
-  console.log(letter);
-  let regexp = new RegExp(`^${letter}*`, "i");
-  const result = arr.filter((val) => val.match(regexp));
-  //console.log("result:", result);
-  return result;
-};
+import { clientSearch } from "./util";
 
 const Home = () => {
   const [friendNames, setFriendNames] = useState([]);
-  const [searching, setSearching] = useState(false);
-
-  // const changeHandler = (value) => {
-  //   if (value.length > 0) {
-  //     console.log(value);
-  //     searchResult = findRelated(value, friendNames);
-  //     console.log(searchResult);
-  //     setSearching(true);
-  //   } else if (value.length === 0) {
-  //     setSearching(false);
-  //   }
-  // };
+  const [searchQuery, setSearchQuery] = useState("");
 
   const addName = (name) => {
-    setSearching(false);
     if (name) {
       const newList = [{ name, stared: false }, ...friendNames];
       setFriendNames(newList);
@@ -51,7 +31,7 @@ const Home = () => {
     <div className="wrapper">
       <div className="main-div">
         <div className="Heading">
-          <h4>Friends List</h4>
+          <h2>Friends List</h2>
         </div>
         <div className="inputDiv">
           <input
@@ -63,14 +43,20 @@ const Home = () => {
             }}
             placeholder="Enter your friends name here"
           ></input>
+          <input
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+            placeholder="Search your friends"
+          ></input>
         </div>
-        <div>
-          <Friend
-            friends={searching ? searchResult : friendNames}
-            removeName={removeName}
-            starHandler={starHandler}
-          />
-        </div>
+        {/* <div style={{ height: "65%" }}> */}
+        <Friend
+          friends={clientSearch(friendNames, "name", searchQuery)}
+          removeName={removeName}
+          starHandler={starHandler}
+        />
+        {/* </div> */}
       </div>
     </div>
   );

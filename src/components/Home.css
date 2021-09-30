@@ -1,9 +1,9 @@
 .main-div {
   width: 40rem;
   height: 30rem;
-  background: rgb(243, 239, 195);
+
   border: 1px solid black;
-  border-radius: 0.5rem;
+
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -18,11 +18,18 @@
 }
 
 .Heading {
-  background: cadetblue;
+  /* background: cadetblue; */
+  height: 15%;
+  background: #234e9b;
+  color: white;
 }
 
 input {
   box-sizing: border-box;
   width: 100%;
   padding: 0.8rem;
+}
+
+.inputDiv {
+  height: 19%;
 }
