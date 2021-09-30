@@ -11,14 +11,12 @@ const Home = () => {
     if (name) {
       const newList = [{ name, stared: false }, ...friendNames];
       setFriendNames(newList);
-      console.log(newList);
     }
   };
 
   const removeName = (index) => {
     const newList = friendNames.filter((val, i) => i !== index);
     setFriendNames(newList);
-    console.log(newList);
   };
 
   const starHandler = (index) => {
@@ -37,7 +35,6 @@ const Home = () => {
           <input
             name="name"
             type="text"
-            // onChange={(e) => changeHandler(e.target.value)}
             onKeyDown={(e) => {
               e.key === "Enter" && addName(e.target.value);
             }}
@@ -50,13 +47,11 @@ const Home = () => {
             placeholder="Search your friends"
           ></input>
         </div>
-        {/* <div style={{ height: "65%" }}> */}
         <Friend
           friends={clientSearch(friendNames, "name", searchQuery)}
           removeName={removeName}
           starHandler={starHandler}
         />
-        {/* </div> */}
       </div>
     </div>
   );

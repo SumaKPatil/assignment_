@@ -5,7 +5,6 @@ import yellowStar from "../assets/filled_star_icon.svg";
 import star from "../assets/blank_star_icon.svg";
 import rightIcon from "../assets/arrow_right_icon.svg";
 import leftIcon from "../assets/arrow_left_icon.svg";
-const stars = [];
 
 const Friend = (props) => {
   const [list, setList] = useState([]);
@@ -17,13 +16,10 @@ const Friend = (props) => {
 
   const handlePagination = (value) => {
     setCurrentPage((prev) => prev + value);
-
-    console.log("value", value);
   };
 
   const sliceList = (pageNum) => {
     const _list = [...list];
-    console.log(pageNum);
 
     return _list.slice(
       (pageNum - 1) * (props.numberOfItems || 4),
@@ -33,13 +29,13 @@ const Friend = (props) => {
 
   let friendList = sliceList(currentPage).map((friend, i) => (
     <div key={i} className="each-friend">
-      <div className="firsthalf" key={i}>
+      <div className="firstHalf" key={i}>
         {friend.name}
-        <div style={{ fontSize: "0.8rem", color: "grey" }}>is your friend</div>
+        <div className="subtext">is your friend</div>
       </div>
       <div className="secondHalf">
         <div
-          className="star"
+          className="icon-button"
           onClick={() => {
             props.starHandler(i);
           }}
@@ -47,7 +43,7 @@ const Friend = (props) => {
           <img src={friend.stared ? yellowStar : star} />
         </div>
         <div
-          className="trash"
+          className="icon-button"
           onClick={() => {
             props.removeName(i);
           }}

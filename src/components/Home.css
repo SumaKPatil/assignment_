@@ -1,9 +1,7 @@
 .main-div {
   width: 40rem;
   height: 30rem;
-
   border: 1px solid black;
-
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -11,14 +9,11 @@
 
 .wrapper {
   display: flex;
-  /* flex-direction: column; */
   text-align: center;
-
   justify-content: center;
 }
 
 .Heading {
-  /* background: cadetblue; */
   height: 15%;
   background: #234e9b;
   color: white;
